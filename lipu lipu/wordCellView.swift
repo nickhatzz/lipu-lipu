@@ -8,26 +8,45 @@
 import SwiftUI
 
 struct wordCellView: View {
+    @Environment(\.colorScheme) var colorScheme
     let word: Word
     
-    func HStack() {
-        Image()
-            .resizable()
-            .frame(width: 50, height: 50)
-            .padding()
-        
-        VStack {
-            Text(word.name)
-                .font(.headline)
-            Text(word.translations)
-                .font(.subheadline)
+    var body: some View {
+        HStack {
+            if colorScheme == .dark {
+                Image(word.name)
+                    .resizable()
+                    .frame(width: 75, height: 75)
+                    .padding(3)
+            } else {
+                Image(word.name)
+                    .resizable()
+                    .frame(width: 75, height: 75)
+                    .padding(3)
+                    .colorInvert()
+            }
+            
+            VStack(alignment: .leading) {
+                HStack {
+                    Text(word.name)
+                        .font(.headline)
+                    if colorScheme == .dark {
+                        Image(word.source)
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                    } else {
+                        Image(word.source)
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                            .colorInvert()
+                    }
+                }
+                Text(word.translations)
+                    .font(.subheadline)
+            }
+            .padding(.leading, 5)
+            
+            Spacer()
         }
-        .padding(.leading, 5)
-        
-        Spacer()
     }
-}
-
-#Preview {
-    wordCellView()
 }

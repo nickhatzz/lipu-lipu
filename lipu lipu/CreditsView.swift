@@ -9,7 +9,15 @@ import SwiftUI
 
 struct CreditsView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("lipu lipu Credits")
+            .font(.headline)
+        Spacer()
+        VStack {
+            Text("App created by Nick Hatzidakis")
+            Text("Toki Pona was created by Sonja Lang")
+            Text("Definitions and sitelen pona sourced from [nimi.li](https://nimi.li)")
+        }
+        Spacer()
     }
 }
 
