@@ -29,23 +29,9 @@
 		64C7AF632D1484380069331F /* lipu lipuUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "lipu lipuUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		647A70E12D36F04100131BC3 /* Exceptions for "lipu lipu" folder in "lipu lipuTests" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				translations,
-				words,
-			);
-			target = 64C7AF582D1484380069331F /* lipu lipuTests */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		64C7AF462D1484360069331F /* lipu lipu */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				647A70E12D36F04100131BC3 /* Exceptions for "lipu lipu" folder in "lipu lipuTests" target */,
-			);
 			path = "lipu lipu";
 			sourceTree = "<group>";
 		};

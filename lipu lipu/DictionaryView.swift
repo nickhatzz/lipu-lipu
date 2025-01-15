@@ -10,8 +10,8 @@ import SwiftUI
 struct DictionaryView: View {
     
     @State private var searchText = ""
-    let words: [String] = try! String(contentsOfFile: Bundle.main.path(forResource: "words", ofType: "txt") ?? "", encoding: .ascii).components(separatedBy: "\n")
-    let translations: [String] = try! String(contentsOfFile: Bundle.main.path(forResource: "translations", ofType: "txt") ?? "", encoding: .ascii).components(separatedBy: "\n")
+    var words: [String] = readFile("words")
+    var translations: [String] = readFile("translations")
 //    @State private var words = [
 //        Word(id: 1, name: "a", translations: "(interjection) ah, oh, ha, eh, um, oy; (particle) [placed after something for emphasis or emotion]", source: "pu"),
 //        Word(id: 2, name: "akesi", translations: "reptile, amphibian, scaly creature, crawling creature", source: "pu"),
@@ -167,14 +167,31 @@ struct DictionaryView: View {
         }
     }
     
+    
+    
 }
 
-struct Word: Identifiable {
-    let id: Int
-    let name: String
-    let translations: String
-    let source: String // which toki pona book it's from: pu or ku
+func readFile(_ fileName: String) -> [String] {
+    let fileData: [String]
+    if let filePath = Bundle.main.path(forResource: fileName, ofType: "txt") {
+        if let fileContents = try? String(contentsOfFile: filePath, encoding: .ascii) {
+            fileData = fileContents.components(separatedBy: "\n")
+            return fileData
+        } else {
+            print(":(")
+        }
+    } else {
+        print(":(")
+    }
+    return ["Error! Could not load dictionary!"]
 }
+
+//struct Word: Identifiable {
+//    let id: Int
+//    let name: String
+//    let translations: String
+//    let source: String // which toki pona book it's from: pu or ku
+//}
 
 #Preview {
     DictionaryView()
