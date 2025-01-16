@@ -29,9 +29,22 @@
 		64C7AF632D1484380069331F /* lipu lipuUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "lipu lipuUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		01FEE92E2D386742002A7CFA /* Exceptions for "lipu lipu" folder in "lipu lipuTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Resources/fonts/sitelenselikiwenmonoasuki.ttf,
+			);
+			target = 64C7AF582D1484380069331F /* lipu lipuTests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		64C7AF462D1484360069331F /* lipu lipu */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				01FEE92E2D386742002A7CFA /* Exceptions for "lipu lipu" folder in "lipu lipuTests" target */,
+			);
 			path = "lipu lipu";
 			sourceTree = "<group>";
 		};
@@ -396,8 +409,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"lipu lipu/Preview Content\"";
+				DEVELOPMENT_TEAM = H8FW6KD8L3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "lipu-lipu-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -424,8 +439,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"lipu lipu/Preview Content\"";
+				DEVELOPMENT_TEAM = H8FW6KD8L3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "lipu-lipu-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
