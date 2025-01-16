@@ -33,7 +33,7 @@ struct DictionaryView: View {
             return words
         } else {
             return words.filter { word in
-                word[0].contains(searchText.lowercased())
+                word[0].hasPrefix(searchText.lowercased())
             }
         }
     }
@@ -41,12 +41,14 @@ struct DictionaryView: View {
 }
 
 func getWords() -> [[String]] {
-    let fileData: [String]
+    var fileData: [String]
     var wordsList: [[String]]
     if let filePath = Bundle.main.path(forResource: "words", ofType: "txt") {
         if let fileContents = try? String(contentsOfFile: filePath, encoding: .ascii) {
             fileData = fileContents.components(separatedBy: "\n")
-            wordsList = Array(repeating: ["", "", ""], count: fileData.count - 1)
+            fileData.remove(at: fileData.firstIndex(of: "") ?? 0)
+            fileData.sort()
+            wordsList = Array(repeating: ["", "", ""], count: fileData.count)
             for line in fileData {
                 let index = fileData.firstIndex(of: line)
                 if !line.isEmpty {

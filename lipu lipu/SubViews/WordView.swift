@@ -50,6 +50,7 @@ struct WordView: View {
             
             Spacer()
         }
+        .padding(.leading, 5)
         List {
             ForEach(translationsArray, id: \.self) { definition in
                 Text(definition)

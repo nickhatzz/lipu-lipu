@@ -30,13 +30,31 @@ struct CreditsView: View {
                 List {
                     Section(header: Text("Acknowledgements")) {
                         Text("Toki Pona was created by Sonja Lang")
-                        Text("Definitions sourced from [nimi.li](https://nimi.li)")
-                        Text("Sitelen pona font: [sitelen seli kiwen](https://www.kreativekorp.com/software/fonts/sitelenselikiwen/)")
+                        Link(destination: URL(string: "https://tokipona.org")!) {
+                            HStack {
+                                Text("Official Toki Pona books")
+                                Spacer()
+                                Image(systemName: "safari")
+                            }
+                        }
+                        Link(destination: URL(string: "https://nimi.li")!) {
+                            HStack {
+                                Text("Definitions sourced from nimi.li")
+                                Spacer()
+                                Image(systemName: "safari")
+                            }
+                        }
+                        Link(destination: URL(string: "https://www.kreativekorp.com/software/fonts/sitelenselikiwen/")!) {
+                            HStack {
+                                Text("Sitelen pona font: sitelen seli kiwen")
+                                Spacer()
+                                Image(systemName: "safari")
+                            }
+                        }
                     }
                 }
             }
             .navigationTitle("Credits")
-            .scrollDisabled(true)
         }
     }
 }
