@@ -18,6 +18,7 @@
   <li>Alternate free: <a href="https://altstore.io">Altstore</a></li>
   <li>Alternate free: <a href="https://sideloadly.io">Sideloadly</a></li>
 </ul>
+<p>With any of the free methods, you will have to resign the app every 7 days and can only sideloadly up to 2 other apps. I reccomend SideStore over the others because it makes this process easier by letting you do it directly from your phone. KravaSign is what I personally use, because you don't have to resign apps and you can sign more than just 3.</p>
 <h2>Credits</h2>
 <ul>
   <li>lipu lipu sources its definitions from <a href="https://nimi.li">nimi.li</a></li>
