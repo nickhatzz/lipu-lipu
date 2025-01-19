@@ -54,7 +54,7 @@ struct CreditsView: View {
                     }
                 }
             }
-            .navigationTitle("Credits")
+            .navigationTitle("About")
         }
     }
 }

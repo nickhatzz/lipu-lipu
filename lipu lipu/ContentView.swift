@@ -17,7 +17,7 @@ struct ContentView: View {
                 DictionaryView()
             }
             
-            Tab("Phrases", systemImage: "book.fill", value: 2) {
+            Tab("Phrasebook", systemImage: "book.fill", value: 2) {
                 PhrasesView()
             }
 
@@ -29,7 +29,7 @@ struct ContentView: View {
                 FlashcardsView()
             }
 
-            Tab("Credits", systemImage: "info.square.fill", value: 4) {
+            Tab("About", systemImage: "info.square.fill", value: 4) {
                 CreditsView()
             }
         }
