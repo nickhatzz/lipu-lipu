@@ -52,34 +52,32 @@ struct WordView: View {
                 Spacer()
             }
             .padding(.leading, 5)
-            Form {
-                List {
-                    Section(header: Text("Definitions")) {
-                        ForEach(translationsArray, id: \.self) { definition in
-                            Text(definition)
-                        }
+            List {
+                Section(header: Text("Definitions")) {
+                    ForEach(translationsArray, id: \.self) { definition in
+                        Text(definition)
                     }
                 }
-                List {
-                    Section(header: Text("Resources")) {
+                Section(header: Text("Resources")) {
+                    HStack {
                         Link(destination: URL(string: "https://nimi.li/\(word)")!) {
-                            HStack {
-                                Text("Open in nimi.li")
-                                Spacer()
-                                Image(systemName: "safari")
-                            }
+                            Text("Open in nimi.li")
                         }
+                        Spacer()
+                        Image(systemName: "safari")
+                            .foregroundStyle(.tertiary)
+                    }
+                    HStack {
                         Link(destination: URL(string: "https://linku.la/words/\(word)")!) {
-                            HStack {
-                                Text("Open in linku.la")
-                                Spacer()
-                                Image(systemName: "safari")
-                            }
+                            Text("Open in linku.la")
                         }
+                        Spacer()
+                        Image(systemName: "safari")
+                            .foregroundStyle(.tertiary)
                     }
                 }
             }
-            
+            .listSectionSpacing(10)
             Spacer()
         }
         

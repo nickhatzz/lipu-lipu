@@ -12,7 +12,8 @@ struct ClassroomView: View {
         NavigationStack {
             List {
                 Section(header: Text("Basics")) {
-                    LessonPreviewCellView(lessonNumber: 1, lessonName: "Pronounciation", tokiWord: "kalama", isComplete: false, destination: PronounciationLessonView())
+                    LessonPreviewCellView(lessonNumber: 1, lessonName: "Introduction", tokiWord: "toki-pona", isComplete: false, destination: PronounciationLessonView())
+                    LessonPreviewCellView(lessonNumber: 2, lessonName: "Pronounciation & Spelling", tokiWord: "kalama", isComplete: false, destination: PronounciationLessonView())
                 }
             }
             .navigationTitle("Lessons")
