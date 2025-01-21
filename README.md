@@ -1,7 +1,14 @@
 <h1>lipu lipu</h1>
+<div id="badges">
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/nickhatzz/lipu-lipu">
+  <img alt="GitHub commits since latest release" src="https://img.shields.io/github/commits-since/nickhatzz/lipu-lipu/latest">
+</div>
 <img src="https://github.com/user-attachments/assets/fc7d6489-2146-4781-88f9-ced005de5331" width="100">
 <h3>A 100% SwiftUI Toki Pona learning resource for iOS</h3>
-<img src="https://github.com/user-attachments/assets/149a7389-40f2-4814-b5f9-4085225d82ab" width="256"><img src="https://github.com/user-attachments/assets/9850520e-688d-4b31-a947-7430c28dbf59" width="256">
+<div id="app-images">
+  <img src="https://github.com/user-attachments/assets/149a7389-40f2-4814-b5f9-4085225d82ab" width="256">
+  <img src="https://github.com/user-attachments/assets/9850520e-688d-4b31-a947-7430c28dbf59" width="256">
+</div>
 <h2>Description</h2>
 <p>lipu lipu is an easy to use app to help learn Toki Pona, the constructed language (conlang) created by Sonja Lang. The language is designed to be very simple and easy to learn, and is meant to help simplify thought. With a searchable dictionary, fully fledged lessons, and customizable flashcards, lipu lipu is the perfect tool to aide the learning process.</p>
 <h2>Features</h2>
