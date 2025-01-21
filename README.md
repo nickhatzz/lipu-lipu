@@ -2,12 +2,26 @@
 <img src="https://github.com/user-attachments/assets/fc7d6489-2146-4781-88f9-ced005de5331" width="100">
 <h3>A 100% SwiftUI Toki Pona learning resource for iOS</h3>
 <img src="https://github.com/user-attachments/assets/149a7389-40f2-4814-b5f9-4085225d82ab" width="256"><img src="https://github.com/user-attachments/assets/9850520e-688d-4b31-a947-7430c28dbf59" width="256">
+<h2>Description</h2>
+<p>lipu lipu is an easy to use app to help learn Toki Pona, the constructed language (conlang) created by Sonja Lang. The language is designed to be very simple and easy to learn, and is meant to help simplify thought. With a searchable dictionary, fully fledged lessons, and customizable flashcards, lipu lipu is the perfect tool to aide the learning process.</p>
 <h2>Features</h2>
 <ul>
   <li>Searchable dictionary, featuring 140 words</li>
   <li>Phrasebook with common ways to say different phrases</li>
+  <ul>
+    <li>Keep in mind that Toki Pona is a very flexible language! There are many different ways you could say any concept, and the phrasebook just gives suggestions of common ways it could be said.</li>
+    <li>Currently WIP</li>
+  </ul>
   <li>Fully fledged lessons to learn Toki Pona with</li>
+  <ul>
+    <li>Currently WIP</li>
+  </ul>
   <li>Flashcards to retain vocabulary</li>
+  <ul>
+    <li>Many different flashcard sets</li>
+    <li>You can also create custom flashcards</li>
+    <li>Currently WIP</li>
+  </ul>
 </ul>
 <h2>Installation</h2>
 <p>lipu lipu is not currently on the App Store, so you will have to sideload it onto your device.</p>
