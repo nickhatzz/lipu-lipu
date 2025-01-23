@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct CreditsView: View {
+    @State private var showingResetClassAlert = false
+    @State private var showingResetCardsAlert = false
+    
     var body: some View {
         NavigationStack {
             List {
@@ -73,8 +76,16 @@ struct CreditsView: View {
                 Section {
                     HStack {
                         Button("Reset Classroom Progress", action: {
-                            
+                            showingResetClassAlert = true
                         })
+                        .alert(isPresented: $showingResetClassAlert) {
+                            Alert(
+                                title: Text("Reset all classroom data?"),
+                                message: Text("This action cannot be undone."),
+                                primaryButton: .destructive(Text("Reset"), action: {}),
+                                secondaryButton: .cancel(Text("Cancel"))
+                            )
+                        }
                         .foregroundStyle(.foreground)
                         Spacer()
                         Image(systemName: "trash")
@@ -82,8 +93,16 @@ struct CreditsView: View {
                     }
                     HStack {
                         Button("Reset Flashcard Data", action: {
-                            
+                            showingResetCardsAlert = true
                         })
+                        .alert(isPresented: $showingResetCardsAlert) {
+                            Alert(
+                                title: Text("Reset all flashcard data?"),
+                                message: Text("This action cannot be undone."),
+                                primaryButton: .destructive(Text("Reset"), action: {}),
+                                secondaryButton: .cancel(Text("Cancel"))
+                            )
+                        }
                         .foregroundStyle(.foreground)
                         Spacer()
                         Image(systemName: "trash")
