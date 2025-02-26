@@ -9,6 +9,7 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
+    @StateObject private var appearanceManager = AppearanceManager.shared
     @State var selection = 0;
 
     var body: some View {
@@ -33,6 +34,7 @@ struct ContentView: View {
                 CreditsView()
             }
         }
+        .preferredColorScheme(appearanceManager.getAppearanceChoice())
     }
 }
 
