@@ -3,7 +3,16 @@
   <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/nickhatzz/lipu-lipu">
   <img alt="GitHub commits since latest release" src="https://img.shields.io/github/commits-since/nickhatzz/lipu-lipu/latest">
 </div>
-<img src="https://github.com/user-attachments/assets/fc7d6489-2146-4781-88f9-ced005de5331" width="100">
+<img src="https://github.com/user-attachments/assets/c4e22323-04e5-4fdb-9cbb-b8861464e284" width="100">
+<img src="https://github.com/user-attachments/assets/7d5bc497-710f-48bb-811d-94cb0ac0a582" width="100">
+<img src="https://github.com/user-attachments/assets/66ff996c-baa2-4dce-86da-c7f25672298a" width="100">
+<img src="https://github.com/user-attachments/assets/09a63c67-94b6-4122-87a8-1a5c70d416b1" width="100">
+<img src="https://github.com/user-attachments/assets/41e18920-dbba-4da8-9616-6c8395278ee2" width="100">
+<img src="https://github.com/user-attachments/assets/dc5b41eb-c9e1-472d-afb3-5b513b1cc746" width="100">
+<img src="https://github.com/user-attachments/assets/24c7faba-63ab-4287-9c2e-c78450c1b817" width="100">
+
+
+
 <h3>A 100% SwiftUI Toki Pona learning resource for iOS</h3>
 <div id="app-images">
   <img src="https://github.com/user-attachments/assets/149a7389-40f2-4814-b5f9-4085225d82ab" width="256">
