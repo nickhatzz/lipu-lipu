@@ -47,12 +47,11 @@
 <p>lipu lipu is not currently on the App Store, so you will have to sideload it onto your device.</p>
 <p>To sideload the app if your device is unjailbroken, download the .ipa file from releases, and then follow one of the methods below:</p>
 <ul>
-  <li>Reccomended free: <a href="https://sidestore.io">SideStore</a></li>
-  <li>Reccomended paid: <a href="https://kravasign.com">KravaSign</a></li>
-  <li>Alternate free: <a href="https://altstore.io">Altstore</a></li>
-  <li>Alternate free: <a href="https://sideloadly.io">Sideloadly</a></li>
+  <li>Recommended: <a href="https://sidestore.io">SideStore</a></li>
+  <li>Alternate: <a href="https://altstore.io">Altstore</a></li>
+  <li>Alternate: <a href="https://sideloadly.io">Sideloadly</a></li>
 </ul>
-<p>With any of the free methods, you will have to resign the app every 7 days and can only sideloadly up to 2 other apps. I reccomend SideStore over the others because it makes this process easier by letting you do it directly from your phone. KravaSign is what I personally use, because you don't have to resign apps and you can sign more than just 3.</p>
+<p>With any of these methods, you will have to resign the app every 7 days and can only sideloadly up to 2 other apps. I recommend SideStore over the others because it makes this process easier by letting you do it directly from your phone.</p>
 
 
 <h2>Roadmap</h2>
