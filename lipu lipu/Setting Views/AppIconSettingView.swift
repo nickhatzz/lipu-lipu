@@ -10,7 +10,7 @@ import SwiftUI
 struct AppIconSettingView: View {
     var colorIcons: [String] = ["Red", "Orange", "Yellow", "Green", "Blue", "Pink"]
     var tokiPonaIcons: [String] = ["Toki Pona", "Pu", "Kijetesantakalu", "Mun", "Suwi"]
-    var funIcons: [String] = ["Kalama", "Musi"]
+    var funIcons: [String] = ["Y2.01K", "Kalama", "Musi"]
     
     let insets = EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
     

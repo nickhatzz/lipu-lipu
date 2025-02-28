@@ -11,6 +11,11 @@ import CoreData
 struct ContentView: View {
     @StateObject private var appearanceManager = AppearanceManager.shared
     @State var selection = 0;
+    
+    struct accentColor: Hashable {
+        let name: String
+        let color: Color
+    }
 
     var body: some View {
         TabView(selection: $selection) {
@@ -35,6 +40,7 @@ struct ContentView: View {
             }
         }
         .preferredColorScheme(appearanceManager.getAppearanceChoice())
+        .tint(appearanceManager.getAccentColor())
     }
 }
 
