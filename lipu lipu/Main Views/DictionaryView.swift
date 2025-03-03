@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct DictionaryView: View {
-    
     @State private var searchText = ""
     var words: [[String]] = getWords() // word[0] = word; word[1] = translations; word[2] = source
         
@@ -32,8 +31,14 @@ struct DictionaryView: View {
         if searchText.isEmpty {
             return words
         } else {
-            return words.filter { word in
+            let tokiFilter = words.filter { word in
                 word[0].hasPrefix(searchText.lowercased())
+            }
+            if !tokiFilter.isEmpty {
+                return tokiFilter
+            }
+            return words.filter { word in
+                word[1].contains(searchText.lowercased())
             }
         }
     }
