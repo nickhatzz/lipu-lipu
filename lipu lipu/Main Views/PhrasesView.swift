@@ -15,7 +15,7 @@ struct PhrasesView: View {
         NavigationStack {
             List {
                 ForEach(searchResults, id: \.self) { phrase in
-                    NavigationLink(destination: WordView(word: phrase[0], translations: phrase[1], source: phrase[2])) {
+                    NavigationLink(destination: PhraseView(phrase: phrase[0], translations: phrase[1])) {
                         PhrasePreviewCellView(phrase: phrase[0], translations: phrase[1])
                     }
                 }
@@ -38,20 +38,16 @@ struct PhrasesView: View {
 
 func getPhrases() -> [[String]] {
     var fileData: [String]
-    var wordsList: [[String]]
-    if let filePath = Bundle.main.path(forResource: "words", ofType: "txt") {
+    var phraseList: [[String]]
+    if let filePath = Bundle.main.path(forResource: "phrases", ofType: "txt") {
         if let fileContents = try? String(contentsOfFile: filePath, encoding: .ascii) {
-            fileData = fileContents.components(separatedBy: "\n")
-            fileData.remove(at: fileData.firstIndex(of: "") ?? 0)
-            fileData.sort()
-            wordsList = Array(repeating: ["", "", ""], count: fileData.count)
+            fileData = fileContents.trimmingCharacters(in: .whitespacesAndNewlines).components(separatedBy: "\n")
+            phraseList = Array(repeating: ["", ""], count: fileData.count)
             for line in fileData {
                 let index = fileData.firstIndex(of: line)
-                if !line.isEmpty {
-                    wordsList[index!] = (line.components(separatedBy: ": "))
-                }
+                phraseList[index!] = (line.components(separatedBy: ": "))
             }
-            return wordsList
+            return phraseList
         } else {
             print(":(")
         }
