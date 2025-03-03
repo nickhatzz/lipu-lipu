@@ -57,10 +57,10 @@
 <h2>Roadmap</h2>
 
 - [X] Create searchable dictionary
-- [ ] Create phrasebook
+- [X] Create phrasebook
 - [ ] Create lessons
 - [ ] Create flashcards
-  - [ ] Add ability to make custom decks
+- [ ] Add ability to make custom decks
 
 
 
