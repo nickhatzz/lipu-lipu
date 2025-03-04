@@ -43,6 +43,7 @@ func getPhrases() -> [[String]] {
         if let fileContents = try? String(contentsOfFile: filePath, encoding: .ascii) {
             fileData = fileContents.trimmingCharacters(in: .whitespacesAndNewlines).components(separatedBy: "\n")
             phraseList = Array(repeating: ["", ""], count: fileData.count)
+            fileData.sort()
             for line in fileData {
                 let index = fileData.firstIndex(of: line)
                 phraseList[index!] = (line.components(separatedBy: ": "))

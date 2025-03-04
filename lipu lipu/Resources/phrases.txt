@@ -27,3 +27,17 @@ What's new?: seme li sin?
 Friend: jan pona
 Computer: ilo nanpa
 Phone: ilo toki; ilo nanpa lili
+Where is the library?: tomo pi lipu sona li lon seme?; tomo pi lipu li lon seme?
+Bathroom: tomo telo
+Can you repeat that?: o toki e ni sin
+Year: sike; sike suno; tenpo sike
+Day: tenpo suno
+Night: tenpo mun
+Month: mun; tenpo mun; tenpo mun
+School: tomo sona
+Penguin: waso pi telo lete
+Are you okay?: sina li pona ala pona?
+Pet: soweli suwi; soweli tomo
+Where are you from: sina tan ma seme?
+I'm from ...: mi tan ma ...; mi kama tan ma ...
+Do you understand?: sina sona ala sona?
