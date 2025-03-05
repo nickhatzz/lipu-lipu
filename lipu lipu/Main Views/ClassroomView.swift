@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ClassroomView: View {
-    var lessons: [[String]] = getLessons() // lesson[0] = lessonName; lesson[1] = category; lesson[2] = tokiWord; lesson[3] = key vocab; lesson[4+] = text blocks
+    var lessons: [[String]] = getLessons()
+    
     
     
     var body: some View {

@@ -66,7 +66,7 @@ struct LessonView: View {
                 //: TEXT BLOCKS
                 ForEach(lesson, id: \.self) { segment in
                     if lesson.firstIndex(of: segment)! > 3 {
-                        let textBlockArray = segment.components(separatedBy: ": ") // textBlockArray[0] = title; textBlockArray[1] = text
+                        let textBlockArray = segment.components(separatedBy: " : ") // textBlockArray[0] = title; textBlockArray[1] = text
                         Section(header: Text(textBlockArray[0])) {
                             Text(textBlockArray[1].replacingOccurrences(of: "§", with: "\n"))
                         }
@@ -78,5 +78,5 @@ struct LessonView: View {
 }
 
 #Preview {
-    LessonView(lesson: ["Lesson Title", "Category", "toki-pona", "toki, pona, kalama", "text block 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. §§Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "text block 2: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."])
+    LessonView(lesson: ["Lesson Title", "Category", "toki-pona", "toki, pona, kalama", "text block 1 : Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. §§Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "text block 2 : Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."])
 }
