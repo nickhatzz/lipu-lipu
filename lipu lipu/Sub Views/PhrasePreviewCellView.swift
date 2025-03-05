@@ -35,7 +35,6 @@ struct PhrasePreviewCellView: View {
             VStack(alignment: .leading) {
                 Text(phrase)
                     .font(.title)
-                    .bold()
                 Spacer()
                 Text(translationsText)
                     .font(.title2)
