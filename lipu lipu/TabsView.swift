@@ -11,11 +11,6 @@ import CoreData
 struct ContentView: View {
     @StateObject private var appearanceManager = AppearanceManager.shared
     @State var selection = 0;
-    
-    struct accentColor: Hashable {
-        let name: String
-        let color: Color
-    }
 
     var body: some View {
         TabView(selection: $selection) {
@@ -24,7 +19,7 @@ struct ContentView: View {
             }
             
             Tab("Phrasebook", systemImage: "book.fill", value: 2) {
-                PhrasesView()
+                PhrasebookView()
             }
 
             Tab("Classroom", systemImage: "graduationcap.fill", value: 3) {

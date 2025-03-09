@@ -1,5 +1,5 @@
 //
-//  PhrasePreviewCellView.swift
+//  PhrasePreview.swift
 //  lipu lipu
 //
 //  Created by HPro2 on 3/3/25.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PhrasePreviewCellView: View {
+struct PhrasePreview: View {
     @Environment(\.colorScheme) var colorScheme
     let phrase: String
     let translations: String
@@ -35,11 +35,9 @@ struct PhrasePreviewCellView: View {
             VStack(alignment: .leading) {
                 Text(phrase)
                     .font(.title)
-                Spacer()
                 Text(translationsText)
                     .font(.title2)
                     .foregroundStyle(.secondary)
-                Spacer()
                 Text(translationsSitelen)
                     .scaledToFill()
                     .font(Font.custom("sitelenselikiwenmonoasuki", size: 24))
@@ -51,5 +49,5 @@ struct PhrasePreviewCellView: View {
 }
 
 #Preview {
-    PhrasePreviewCellView(phrase: "\"lipu lipu\" is a Toki Pona app", translations: "ilo [lipu lipu] li ilo pi toki-pona; test!; test")
+    PhrasePreview(phrase: "\"lipu lipu\" is a Toki Pona app", translations: "ilo [lipu lipu] li ilo pi toki-pona; test!; test")
 }

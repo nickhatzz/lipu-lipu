@@ -11,6 +11,22 @@ struct CreditsView: View {
     @State private var showingResetClassAlert = false
     @State private var showingResetCardsAlert = false
     
+    struct LinkButtonView: View {
+        let link: String
+        let label: String
+        
+        var body: some View {
+            HStack {
+                Link(destination: URL(string: link)!) {
+                    Text(label)
+                }
+                Spacer()
+                Image(systemName: "safari")
+                    .foregroundStyle(.tertiary)
+            }
+        }
+    }
+    
     var body: some View {
         NavigationStack {
             List {
@@ -41,14 +57,7 @@ struct CreditsView: View {
                 }
                 Section {
                     Text("App created by Nick Hatzidakis")
-                    HStack {
-                        Link(destination: URL(string: "https://github.com/nickhatzz/lipu-lipu")!) {
-                            Text("GitHub Repository")
-                        }
-                        Spacer()
-                        Image(systemName: "safari")
-                            .foregroundStyle(.tertiary)
-                    }
+                    LinkButtonView(link: "https://github.com/nickhatzz/lipu-lipu", label: "GitHub Repository")
                 }
                 //: SETTINGS
                 Section(header: Text("Settings")) {
@@ -112,30 +121,9 @@ struct CreditsView: View {
                 //: ACKNOWLEDGEMENTS
                 Section(header: Text("Acknowledgements")) {
                     Text("Toki Pona was created by Sonja Lang")
-                    HStack {
-                        Link(destination: URL(string: "https://tokipona.org")!) {
-                            Text("Official Toki Pona books")
-                        }
-                        Spacer()
-                        Image(systemName: "safari")
-                            .foregroundStyle(.tertiary)
-                    }
-                    HStack {
-                        Link(destination: URL(string: "https://nimi.li")!) {
-                            Text("Definitions sourced from nimi.li")
-                        }
-                        Spacer()
-                        Image(systemName: "safari")
-                            .foregroundStyle(.tertiary)
-                    }
-                    HStack {
-                        Link(destination: URL(string: "https://www.kreativekorp.com/software/fonts/sitelenselikiwen/")!) {
-                            Text("Sitelen pona font: sitelen seli kiwen")
-                        }
-                        Spacer()
-                        Image(systemName: "safari")
-                            .foregroundStyle(.tertiary)
-                    }
+                    LinkButtonView(link: "https://tokipona.org", label: "Official Toki Pona books")
+                    LinkButtonView(link: "https://linku.la/about", label: "Definitions from sona Linku")
+                    LinkButtonView(link: "https://www.kreativekorp.com/software/fonts/sitelenselikiwen/", label: "Sitelen pona font: sitelen seli kiwen")
                 }
             }
             .navigationTitle("About")

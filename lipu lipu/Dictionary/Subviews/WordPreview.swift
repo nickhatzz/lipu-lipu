@@ -1,5 +1,5 @@
 //
-//  WordPreviewCellView.swift
+//  WordPreview.swift
 //  lipu lipu
 //
 //  Created by HPro2 on 1/9/25.
@@ -7,41 +7,40 @@
 
 import SwiftUI
 
-struct WordPreviewCellView: View {
+struct WordPreview: View {
     @Environment(\.colorScheme) var colorScheme
-    let word: String
-    let translations: String
-    let source: String
-    var sourceToki: String
+    let word: Word
+    let book: String
     
-    init(word: String, translations: String, source: String) {
+    init(word: Word) {
         self.word = word
-        self.translations = translations
-        self.source = source
-        sourceToki = source
         
-        if source == "community" {
-            sourceToki = "kulupu"
+        if word.book == "ku suli" || word.book == "ku lili" {
+            book = "ku"
+        } else if word.book == "none" {
+            book = "kulupu"
+        } else {
+            book = word.book
         }
     }
     
     var body: some View {
         HStack {
-            Text(word)
+            Text(word.word)
                 .frame(width: 75, height: 75, alignment: .center)
                 .scaledToFill()
                 .font(Font.custom("sitelenselikiwenmonoasuki", size: 80))
             
             VStack(alignment: .leading) {
                 HStack {
-                    Text(word)
+                    Text(word.word)
                         .font(.headline)
-                    Text(sourceToki)
+                    Text(book)
                         .frame(width: 25, height: 25, alignment: .center)
                         .scaledToFill()
                         .font(Font.custom("sitelenselikiwenmonoasuki", size: 30))
                 }
-                Text(translations)
+                Text(word.translations["en"]!.definition)
                     .font(.subheadline)
             }
             .padding(.leading, 5)

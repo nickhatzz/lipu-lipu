@@ -26,7 +26,6 @@ struct DisplaySettingView: View {
                         .foregroundStyle(color)
                         .frame(width: 30, height: 30)
                     Text(name)
-                        .font(.headline)
                 }
             }
             .foregroundStyle(.primary)

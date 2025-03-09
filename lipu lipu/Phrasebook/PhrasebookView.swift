@@ -1,5 +1,5 @@
 //
-//  PhrasesView.swift
+//  PhrasebookView.swift
 //  lipu lipu
 //
 //  Created by HPro2 on 12/19/24.
@@ -7,16 +7,16 @@
 
 import SwiftUI
 
-struct PhrasesView: View {
+struct PhrasebookView: View {
     @State private var searchText = ""
-    var phrases: [[String]] = getPhrases() // word[0] = english phrase; word[1] = toki pona translations; word[2] = source
+    var phrases: [[String]] = getPhrases()
     
     var body: some View {
         NavigationStack {
             List {
                 ForEach(searchResults, id: \.self) { phrase in
                     NavigationLink(destination: PhraseView(phrase: phrase[0], translations: phrase[1])) {
-                        PhrasePreviewCellView(phrase: phrase[0], translations: phrase[1])
+                        PhrasePreview(phrase: phrase[0], translations: phrase[1])
                     }
                 }
             }
@@ -59,5 +59,5 @@ func getPhrases() -> [[String]] {
 }
 
 #Preview {
-    PhrasesView()
+    PhrasebookView()
 }
