@@ -71,7 +71,7 @@
 
 <h2>Acknowledgements</h2>
 <ul>
-  <li>lipu lipu sources its definitions from <a href="https://nimi.li">nimi.li</a></li>
+  <li>lipu lipu sources its definitions from <a href="https://linku.la/about">sona Linku</a></li>
   <li>lipu lipu uses the font <a href="https://www.kreativekorp.com/software/fonts/sitelenselikiwen/">sitelen seli kiwen</a> to render sitelen pona characters</li>
   <li>Toki Pona was created by Sonja Lang. The official books can be found <a href="https://tokipona.org">here</a></li>
 </ul>
