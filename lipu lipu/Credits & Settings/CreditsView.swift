@@ -42,7 +42,7 @@ struct CreditsView: View {
                             .frame(width: 150, height: 150)
                         Spacer()
                     }
-                    Text("v1.0.0")
+                    Text("v\(Bundle.main.infoDictionary?["CFBundleShortVersionString"] ?? "0.0.0")")
                         .font(.headline)
                         .fontWeight(.medium)
                         .foregroundStyle(.secondary)
