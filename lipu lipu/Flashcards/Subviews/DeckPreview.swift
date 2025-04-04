@@ -9,28 +9,36 @@ import SwiftUI
 
 struct DeckPreview: View {
     let title: String
-    let sampleWords: [String]
+    let type: String
+    let words: [String: Word]
     let colors: [Color]
     
     var body: some View {
-        VStack {
-            Text(title)
-                .textCase(.uppercase)
-                .font(.caption)
-                .fontWeight(.black)
-                .fontWidth(Font.Width(1))
-                .frame(width: 140, height: 40)
-            ZStack {
-                card(text: sampleWords[0], color: colors[0])
-                    .rotationEffect(Angle(degrees: -10))
-                    .offset(x: -30)
-                card(text: sampleWords[1], color: colors[1])
-                    .rotationEffect(Angle(degrees: 0))
-                card(text: sampleWords[2], color: colors[2])
-                    .rotationEffect(Angle(degrees: 10))
-                    .offset(x: 30, y: 5)
+        NavigationLink(destination: DeckView(title: title, type: type, words: words)) {
+            VStack {
+                Text(title)
+                    .textCase(.uppercase)
+                    .font(.caption)
+                    .fontWeight(.black)
+                    .fontWidth(Font.Width(1))
+                    .frame(width: 140)
+                ZStack {
+                    card(text: words.keys.sorted(by: >).randomElement() ?? "pakala", color: colors[0])
+                        .rotationEffect(Angle(degrees: -10))
+                        .offset(x: -30)
+                    card(text: words.keys.sorted(by: >).randomElement() ?? "pakala", color: colors[1])
+                        .rotationEffect(Angle(degrees: 0))
+                    card(text: words.keys.sorted(by: >).randomElement() ?? "pakala", color: colors[2])
+                        .rotationEffect(Angle(degrees: 10))
+                        .offset(x: 30, y: 5)
+                }
+            }
+            .overlay {
+                RoundedRectangle(cornerRadius: 10, style: .circular).stroke(Color(UIColor.tertiaryLabel), lineWidth: 2)
+                    .frame(width: 145, height: 120)
             }
         }
+        .buttonStyle(PlainButtonStyle())
     }
     
     struct card: View {
@@ -53,8 +61,4 @@ struct DeckPreview: View {
             }
         }
     }
-}
-
-#Preview {
-    DeckPreview(title: "Sample Deck", sampleWords: ["toki", "lipu", "kijetesantakalu"], colors: [.red, .orange, .yellow])
 }
