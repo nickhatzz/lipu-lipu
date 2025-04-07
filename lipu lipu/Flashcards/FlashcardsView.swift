@@ -10,12 +10,24 @@ import SwiftUI
 struct FlashcardsView: View {
     @State var words: [String: Word] = [:]
     
+    struct SectionHeader: View {
+        var title: String
+        
+        var body: some View {
+            Text(title)
+                .font(.title2)
+                .textCase(nil)
+                .fontWeight(.bold)
+                .foregroundStyle(.foreground)
+        }
+    }
+    
     var body: some View {
         NavigationStack {
             List {
                 
                 //: VOCAB
-                Section("Vocabulary") {
+                Section(header: SectionHeader(title: "Vocabulary")) {
                     ScrollView(.horizontal) {
                         LazyHStack(spacing: 30) {
                             DeckPreview(title: "Common", type: "vocab", words: commonWords, colors: [.red, .orange, .yellow])
@@ -28,7 +40,7 @@ struct FlashcardsView: View {
                 }
                 
                 //: SITELEN
-                Section("Sitelen Pona") {
+                Section(header: SectionHeader(title: "Sitelen Pona")) {
                     ScrollView(.horizontal) {
                         LazyHStack(spacing: 30) {
                             DeckPreview(title: "Common", type: "sitelen", words: commonWords, colors: [.pink, .teal, .indigo])
@@ -39,7 +51,7 @@ struct FlashcardsView: View {
                 }
                 
                 //: CUSTOM
-                Section("Custom Decks") {
+                Section(header: SectionHeader(title: "Custom Decks")) {
                     
                 }
             }
