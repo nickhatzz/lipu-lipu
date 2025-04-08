@@ -18,42 +18,40 @@ struct DeckView: View {
     @State var wordKeys: [String] = []
     @State var wordIndex: Int = 0
     
-    struct cardFront: View {
-        let word: Word
-        let color: Color
-        
-        var body: some View {
-            ZStack {
-                RoundedRectangle(cornerSize: CGSize(width: 40, height: 40))
-                    .frame(width: 390, height: 615)
-                    .foregroundStyle(.white)
-                
-                RoundedRectangle(cornerSize: CGSize(width: 30, height: 30))
-                    .frame(width: 375, height: 600)
-                    .foregroundStyle(color)
-                
-                Text(word.word)
-                    .fontWeight(.black)
-                    .fontWidth(Font.Width(1))
-                    .font(.largeTitle)
-                
-                Text("Tap to flip card.")
-                    .offset(y: 250)
-            }
-        }
-    }
-    
-    struct cardBack: View {
-        var body: some View {
-            /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Hello, world!@*/Text("Hello, world!")/*@END_MENU_TOKEN@*/
-        }
-    }
+    @State var xOffset: CGFloat = 0
+    @State var direction: String = "middle"
     
     var body: some View {
         VStack {
             Text(title)
                 .font(.system(size: 50, weight: .black))
-            cardFront(word: words["lipu"]!, color: colors[colorIndex])
+            CardView(word: words["lipu"]!, color: colors[colorIndex], type: type)
+                .offset(x: xOffset)
+                .animation(.interactiveSpring)
+                .gesture(DragGesture(minimumDistance: 0)
+                    .onChanged({ value in
+                        xOffset = value.translation.width
+                        if value.translation.width < -20 {
+                            direction = "left"
+                        }
+                        if value.translation.width > 20 {
+                            direction = "right"
+                        }
+                    })
+                    .onEnded({ value in
+                        if value.translation.width < -20 {
+                            direction = "left"
+                        }
+                        if value.translation.width > 20 {
+                            direction = "right"
+                        }
+                        xOffset = 0
+                    })
+                )
+            
+            if direction == "left" {
+                Text("👎")
+            }
         }.onAppear() {
             wordKeys = words.keys.sorted(by: <)
             wordKeys.shuffle()
