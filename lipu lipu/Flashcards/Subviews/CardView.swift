@@ -11,31 +11,49 @@ struct CardView: View {
     let word: Word
     let color: Color
     let type: String
+    let isFlipped: Bool
     
-    @State var isFlipped: Bool = false
+//    @State var isFlipped: Bool = false
     
     struct CardFront: View {
         let word: Word
-        @State var color: Color
+        let color: Color
+        let type: String
         
         var body: some View {
             ZStack {
-                RoundedRectangle(cornerSize: CGSize(width: 40, height: 40))
-                    .frame(width: 390, height: 615)
+                RoundedRectangle(cornerRadius: 50)
+                    .aspectRatio(0.64, contentMode: .fit)
+                    .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
                     .foregroundStyle(.white)
                 
-                RoundedRectangle(cornerSize: CGSize(width: 30, height: 30))
-                    .frame(width: 375, height: 600)
+                RoundedRectangle(cornerRadius: 40)
+                    .aspectRatio(0.62, contentMode: .fit)
+                    .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 30))
                     .foregroundStyle(color)
                 
-                Text(word.word)
-                    .fontWeight(.black)
-                    .fontWidth(Font.Width(1))
-                    .font(.largeTitle)
+                if type == "vocab" {
+                    Text(word.word)
+                        .fontWeight(.black)
+                        .fontWidth(Font.Width(1))
+                        .font(.largeTitle)
+                        .foregroundStyle(.white)
+                } else {
+                    Text(word.word)
+                        .fontWeight(.black)
+                        .fontWidth(Font.Width(1))
+                        .font(Font.custom("sitelenselikiwenmonoasuki", size: 200))
+                        .foregroundStyle(.white)
+                }
                 
-                Text("Tap to flip card.")
-                    .offset(y: 250)
+                VStack {
+                    Spacer()
+                    Text("Tap to flip card.")
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 55, trailing: 0))
+                        .foregroundStyle(.white)
+                }
             }
+            .aspectRatio(0.64, contentMode: .fit)
         }
     }
     
@@ -46,12 +64,14 @@ struct CardView: View {
         
         var body: some View {
             ZStack {
-                RoundedRectangle(cornerSize: CGSize(width: 40, height: 40))
-                    .frame(width: 390, height: 615)
+                RoundedRectangle(cornerRadius: 50)
+                    .aspectRatio(0.64, contentMode: .fit)
+                    .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
                     .foregroundStyle(.white)
                 
-                RoundedRectangle(cornerSize: CGSize(width: 30, height: 30))
-                    .frame(width: 375, height: 600)
+                RoundedRectangle(cornerRadius: 40)
+                    .aspectRatio(0.62, contentMode: .fit)
+                    .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 30))
                     .foregroundStyle(color)
                 
                 if type == "vocab" {
@@ -59,40 +79,38 @@ struct CardView: View {
                         .fontWeight(.black)
                         .fontWidth(Font.Width(1))
                         .font(.title2)
-                        .frame(width: 360, height: 600)
+                        .aspectRatio(0.5, contentMode: .fit)
+                        .foregroundStyle(.white)
                 } else {
                     Text(word.word)
                         .fontWeight(.black)
                         .fontWidth(Font.Width(1))
-                        .font(Font.custom("sitelenselikiwenmonoasuki", size: 80))
+                        .font(.largeTitle)
+                        .foregroundStyle(.white)
                 }
                 
-                Text("Left: Didn't get it\nRight: Got it")
-                    .offset(y: 250)
+                VStack {
+                    Spacer()
+                    Text("Swipe left or right")
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 55, trailing: 0))
+                        .foregroundStyle(.white)
+                }
             }
+            .aspectRatio(0.64, contentMode: .fit)
         }
     }
     
     var body: some View {
         ZStack {
-            CardFront(word: word, color: color)
             if isFlipped {
                 CardBack(word: word, color: color, type: type)
                     .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
                     .animation(.default, value: true)
+            } else {
+                CardFront(word: word, color: color, type: type)
             }
         }
-        .onTapGesture {
-            isFlipped.toggle()
-        }
         .rotation3DEffect(.degrees(isFlipped ? 180 : 0), axis: (x: 0, y: 1, z: 0))
-        .animation(.default, value: isFlipped)
+        .animation(.bouncy)
     }
-}
-
-#Preview {
-    let translations = [
-        "en": Translations(commentary: "commentary", definition: "flat and bendable object, e.g. paper, card, leaf; written text or document, e.g. book, website, clay tablet", etymology: [TranslationsEtymology(definition: "definition", language: "language")], sp_etymology: "sitelen etymology")
-    ]
-    CardView(word: Word(word: "lipu", book: "pu", source_language: "Finnish", usage_category: "core", etymology: [Etymology(word: "word")], translations: translations), color: .accent, type: "vocab")
 }

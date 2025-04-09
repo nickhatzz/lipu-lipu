@@ -52,7 +52,12 @@ struct FlashcardsView: View {
                 
                 //: CUSTOM
                 Section(header: SectionHeader(title: "Custom Decks")) {
-                    
+                    ScrollView(.horizontal) {
+                        LazyHStack(spacing: 30) {
+                            
+                        }
+                        .padding(EdgeInsets(top: 10, leading: 5, bottom: 10, trailing: 5))
+                    }
                 }
             }
             .listStyle(.inset)
