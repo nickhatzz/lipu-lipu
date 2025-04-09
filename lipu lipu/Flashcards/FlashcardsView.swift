@@ -62,6 +62,11 @@ struct FlashcardsView: View {
             }
             .listStyle(.inset)
             .navigationTitle("Flashcards")
+            .toolbar {
+                NavigationLink(destination: DeckCreationView()) {
+                    Image(systemName: "plus.square.dashed")
+                }
+            }
             .onAppear {
                 apiCall().getWords { (words) in
                     self.words = words
