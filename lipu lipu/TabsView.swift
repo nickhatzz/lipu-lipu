@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct ContentView: View {
     @StateObject private var appearanceManager = AppearanceManager.shared

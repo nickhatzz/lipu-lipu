@@ -7,12 +7,20 @@
 
 import SwiftUI
 
-struct DeckCreationView: View {
-    @State var words: [String: Word] = [:]
+struct DeckCreationView: View {    
+    @StateObject private var appearanceManager = AppearanceManager.shared
+    @Environment(\.modelContext) var modelContext
+    @Environment(\.presentationMode) var presentationMode
     
+    @State var words: [String: Word] = [:]
+    @State var selectedWords: [String: Word] = [:]
     @State var searchText: String = ""
     @State var titleText: String = ""
     @State var typeSelection: String = "vocab"
+    
+    let adaptiveColumn = [
+        GridItem(.adaptive(minimum: 100))
+    ]
     
     struct SectionHeader: View {
         var title: String
@@ -29,80 +37,72 @@ struct DeckCreationView: View {
     
     var body: some View {
         NavigationStack {
-            // title
-            VStack {
-                HStack {
-                    SectionHeader(title: "Deck Title")
-                    Spacer()
-                }
-                TextField("Enter deck title...", text: $titleText)
-                    .textFieldStyle(.roundedBorder)
-            }
-            .padding()
-            
-            VStack {
-                HStack {
-                    SectionHeader(title: "Deck type")
-                    Spacer()
-                }
-                Picker(selection: $typeSelection, label: Text("Deck Type")) {
-                    Text("Vocabulary").tag("vocab")
-                    Text("Sitelen Pona").tag("sitelen")
-                }
-                .pickerStyle(.segmented)
-            }
-            .padding()
-            
-            // words list
             List {
-                if !words.isEmpty {
-                    ForEach(searchResults, id: \.self) { word in
-                        WordCheckboxView(word: words[word]!)
+                //: TITLE
+                Section(header: SectionHeader(title: "Title")) {
+                    TextField("Enter deck title...", text: $titleText)
+                    .navigationTitle("Create a deck")
+                    .onAppear {
+                        apiCall().getWords { (words) in
+                            self.words = words
+                        }
+                    }
+                    .toolbar {
+                        Button {
+                            guard !selectedWords.isEmpty else { return }
+                            let deck = CustomDeck(title: titleText, type: typeSelection, words: selectedWords)
+                            modelContext.insert(deck)
+                            presentationMode.wrappedValue.dismiss()
+                        } label: {
+                            Image(systemName: "checkmark.rectangle.stack.fill")
+                        }
+                    }
+                }
+                
+                //: TYPE
+                Section(header: SectionHeader(title: "Type")) {
+                    Picker(selection: $typeSelection, label: Text("Deck Type")) {
+                        Text("Vocabulary").tag("vocab")
+                        Text("Sitelen Pona").tag("sitelen")
+                    }
+                    .pickerStyle(.segmented)
+                }
+                
+                //: WORDS LIST
+                Section(header: SectionHeader(title: "Words")) {
+                    LazyVGrid(columns: adaptiveColumn, spacing: 12) {
+                        if !words.isEmpty {
+                            ForEach(words.keys.sorted(by: <), id: \.self) { word in
+                                Button {
+                                    withAnimation {
+                                        if selectedWords.keys.contains(where: { $0 == word }) {
+                                            selectedWords.removeValue(forKey: word)
+                                        } else {
+                                            selectedWords[word] = words[word]
+                                        }
+                                    }
+                                } label: {
+                                    VStack {
+                                        Text(word)
+                                            .font(Font.custom("sitelenselikiwenmonoasuki", size: 75))
+                                            .foregroundStyle(.secondary)
+                                        Text(word)
+                                            .font(.callout)
+                                            .bold()
+                                    }
+                                    .frame(width: 90)
+                                }
+                                .buttonStyle(.borderedProminent)
+                                .tint(Color(UIColor.tertiarySystemFill))
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 30, style: .circular).stroke(selectedWords.keys.contains(where: { $0 == word }) ? appearanceManager.getAccentColor() : .secondary, lineWidth: 3)
+                                )
+                            }
+                        }
                     }
                 }
             }
-            .searchable(text: $searchText)
-            .onAppear {
-                apiCall().getWords { (words) in
-                    self.words = words
-                }
-            }
-            .toolbar {
-                Button {
-                    
-                } label: {
-                    Image(systemName: "bin.xmark")
-                }
-                .tint(.red)
-                
-                Spacer()
-                
-                Button {
-                    
-                } label: {
-                    Image(systemName: "checkmark")
-                }
-                .tint(.green)
-            }
-        }
-    }
-    
-    var searchResults: [String] {
-        let wordKeys = words.keys.sorted(by: <)
-        if searchText.isEmpty {
-            return wordKeys.filter { key in
-                words[key]!.usage_category != "obscure"
-            }
-        } else {
-            let tokiFilter = wordKeys.filter { key in
-                key.hasPrefix(searchText.lowercased()) && words[key]!.usage_category != "obscure"
-            }
-            if !tokiFilter.isEmpty {
-                return tokiFilter
-            }
-            return wordKeys.filter { key in
-                words[key]!.translations["en"]!.definition.lowercased().contains(searchText.lowercased()) && words[key]!.usage_category != "obscure"
-            }
+            .listStyle(.inset)
         }
     }
 }

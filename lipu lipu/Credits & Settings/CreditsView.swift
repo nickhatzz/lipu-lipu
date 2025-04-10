@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CreditsView: View {
+    @Environment(\.modelContext) var modelContext
     @State private var showingResetClassAlert = false
     @State private var showingResetCardsAlert = false
     
@@ -83,23 +84,23 @@ struct CreditsView: View {
                     }
                 }
                 Section {
-                    HStack {
-                        Button("Reset Classroom Progress", action: {
-                            showingResetClassAlert = true
-                        })
-                        .alert(isPresented: $showingResetClassAlert) {
-                            Alert(
-                                title: Text("Reset all classroom data?"),
-                                message: Text("This action cannot be undone."),
-                                primaryButton: .destructive(Text("Reset"), action: {}),
-                                secondaryButton: .cancel(Text("Cancel"))
-                            )
-                        }
-                        .foregroundStyle(.foreground)
-                        Spacer()
-                        Image(systemName: "trash")
-                            .foregroundStyle(.tertiary)
-                    }
+//                    HStack {
+//                        Button("Reset Classroom Progress", action: {
+//                            showingResetClassAlert = true
+//                        })
+//                        .alert(isPresented: $showingResetClassAlert) {
+//                            Alert(
+//                                title: Text("Reset all classroom data?"),
+//                                message: Text("This action cannot be undone."),
+//                                primaryButton: .destructive(Text("Reset"), action: {}),
+//                                secondaryButton: .cancel(Text("Cancel"))
+//                            )
+//                        }
+//                        .foregroundStyle(.foreground)
+//                        Spacer()
+//                        Image(systemName: "trash")
+//                            .foregroundStyle(.tertiary)
+//                    }
                     HStack {
                         Button("Reset Flashcard Data", action: {
                             showingResetCardsAlert = true
@@ -108,7 +109,7 @@ struct CreditsView: View {
                             Alert(
                                 title: Text("Reset all flashcard data?"),
                                 message: Text("This action cannot be undone."),
-                                primaryButton: .destructive(Text("Reset"), action: {}),
+                                primaryButton: .destructive(Text("Reset"), action: deleteFlashcardData),
                                 secondaryButton: .cancel(Text("Cancel"))
                             )
                         }
@@ -129,6 +130,10 @@ struct CreditsView: View {
             .navigationTitle("About")
             .listSectionSpacing(15)
         }
+    }
+    
+    func deleteFlashcardData() {
+        try! modelContext.delete(model: CustomDeck.self)
     }
 }
 

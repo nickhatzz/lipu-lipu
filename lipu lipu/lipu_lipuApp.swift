@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct lipu_lipuApp: App {
@@ -16,5 +17,6 @@ struct lipu_lipuApp: App {
             ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
+        .modelContainer(for: CustomDeck.self)
     }
 }
