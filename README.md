@@ -15,8 +15,9 @@
 
 <h3>A 100% SwiftUI Toki Pona learning resource for iOS</h3>
 <div id="app-images">
-  <img src="https://github.com/user-attachments/assets/149a7389-40f2-4814-b5f9-4085225d82ab" width="256">
-  <img src="https://github.com/user-attachments/assets/9850520e-688d-4b31-a947-7430c28dbf59" width="256">
+  <img src="https://github.com/user-attachments/assets/05366f23-0e15-43ee-9c8e-344a83730090" width="175">
+  <img src="https://github.com/user-attachments/assets/5e659176-adcc-4df8-9a01-a246af4b5bb4" width="175">
+  <img src="https://github.com/user-attachments/assets/cbae8bbf-dd8a-47b5-804a-ef34bce49b62" width="175">
 </div>
 
 
@@ -24,11 +25,13 @@
 <p>lipu lipu is an easy to use app to help learn Toki Pona, the constructed language (conlang) created by Sonja Lang. The language is designed to be very simple and easy to learn, and is meant to help simplify thought. With a searchable dictionary, fully fledged lessons, and customizable flashcards, lipu lipu is the perfect tool to aide the learning process.</p>
 <h2>Features</h2>
 <ul>
-  <li>Searchable dictionary, featuring 140 words</li>
+  <li>Searchable dictionary, featuring 140 words, their definitions and etymology</li>
+  <ul>
+    <li>Definitions, etymology, and commentary provided by <a href="https://linku.la/about">sona Linku</a></li>
+  </ul>
   <li>Phrasebook with common ways to say different phrases</li>
   <ul>
     <li>Keep in mind that Toki Pona is a very flexible language! There are many different ways you could say any concept, and the phrasebook just gives suggestions of common ways it could be said.</li>
-    <li>Currently WIP</li>
   </ul>
   <li>Fully fledged lessons to learn Toki Pona with</li>
   <ul>
@@ -37,8 +40,8 @@
   <li>Flashcards to retain vocabulary</li>
   <ul>
     <li>Many different flashcard sets</li>
-    <li>You can also create custom flashcards</li>
-    <li>Currently WIP</li>
+    <li>Flashcard sets to learn definitions as well as sets to learn sitelen pona characters</li>
+    <li>Ability to create your own flashcard sets</li>
   </ul>
 </ul>
 
@@ -58,10 +61,9 @@
 
 - [X] Create searchable dictionary
 - [X] Create phrasebook
-- [ ] Create lessons
-- [ ] Create flashcards
-- [ ] Add ability to make custom decks
-
+- [X] Create flashcards
+- [X] Add ability to make custom decks
+- [ ] Finish lessons
 
 
 <h2>Contact</h2>
