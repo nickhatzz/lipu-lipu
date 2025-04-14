@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct WordPreview: View {
-    @Environment(\.colorScheme) var colorScheme
     let word: Word
     let book: String
     

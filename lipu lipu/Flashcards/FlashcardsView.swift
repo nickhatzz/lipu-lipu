@@ -12,18 +12,6 @@ struct FlashcardsView: View {
     @State var words: [String: Word] = [:]
     @Query var customDecks: [CustomDeck]
     
-    struct SectionHeader: View {
-        var title: String
-        
-        var body: some View {
-            Text(title)
-                .font(.title2)
-                .textCase(nil)
-                .fontWeight(.bold)
-                .foregroundStyle(.foreground)
-        }
-    }
-    
     var body: some View {
         NavigationStack {
             List {
@@ -56,7 +44,7 @@ struct FlashcardsView: View {
                     ScrollView(.horizontal) {
                         LazyHStack(spacing: 30) {
                             ForEach(customDecks, id: \.self) { deck in
-                                DeckPreview(title: deck.title, type: deck.type, words: deck.words, colors: colorsFromTitle(deck.title))
+                                DeckPreview(title: deck.title, type: deck.type, words: deck.words, colors: getRandomColors(title: deck.title))
                             }
                         }
                         .padding(EdgeInsets(top: 10, leading: 5, bottom: 10, trailing: 5))
@@ -78,83 +66,18 @@ struct FlashcardsView: View {
         }
     }
     
-    func colorsFromTitle(_ title: String) -> [Color] {
-        let possibleColors: [Color] = [.red, .orange, .yellow, .green, .cyan, .blue, .purple, .indigo, .mint, .teal]
+    func getRandomColors(title: String) -> [Color] {
+        let possibleColors: [Color] = [.red, .orange, .yellow, .green, .cyan, .blue, .purple, .indigo, .mint, .teal, .black, .brown, .gray, .pink]
+        srand48(title.hash)
         
-        var colors: [Color]
-        let titleInt: Int = stringToInt(title)
-        let titleIntArray = String(describing: titleInt).compactMap { Int(String($0)) }
-        
-        guard String(describing: titleInt).count > 2 else { return [.red, .orange, .green] }
-        
-        colors = [possibleColors[titleIntArray[0]], possibleColors[titleIntArray[1]], possibleColors[titleIntArray[2]]]
-        
-        return colors
-    }
-    
-    func stringToInt(_ string: String) -> Int {
-        var intString = ""
-        
-        for letter in string {
-            switch letter {
-            case "a":
-                intString.append("0")
-            case "b":
-                intString.append("1")
-            case "c":
-                intString.append("2")
-            case "d":
-                intString.append("3")
-            case "e":
-                intString.append("4")
-            case "f":
-                intString.append("5")
-            case "g":
-                intString.append("6")
-            case "h":
-                intString.append("7")
-            case "i":
-                intString.append("8")
-            case "j":
-                intString.append("9")
-            case "k":
-                intString.append("0")
-            case "l":
-                intString.append("1")
-            case "m":
-                intString.append("2")
-            case "n":
-                intString.append("3")
-            case "o":
-                intString.append("4")
-            case "p":
-                intString.append("5")
-            case "q":
-                intString.append("6")
-            case "r":
-                intString.append("7")
-            case "s":
-                intString.append("8")
-            case "t":
-                intString.append("9")
-            case "u":
-                intString.append("0")
-            case "v":
-                intString.append("1")
-            case "w":
-                intString.append("2")
-            case "x":
-                intString.append("3")
-            case "y":
-                intString.append("4")
-            case "z":
-                intString.append("5")
-            default:
-                intString.append("0")
-            }
+        var randomColors: [Color] = []
+
+        for _ in 0...2 {
+            let index = Int(drand48() * Double(possibleColors.count - 1))
+            randomColors.append(possibleColors[index])
         }
         
-        return Int(intString) ?? 567
+        return randomColors
     }
     
     //: WORD LISTS

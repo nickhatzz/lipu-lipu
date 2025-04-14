@@ -14,11 +14,11 @@ struct ClassroomView: View {
         NavigationStack {
             List {
                 //: BASICS
-                Section(header: Text("Basics")) {
+                Section(header: SectionHeader(title: "Basics")) {
                     ForEach(lessons, id: \.title) { lesson in
                         let index = lessons.firstIndex(where: { $0.title == lesson.title })! + 1
                         if lesson.category == "Basics" {
-                            LessonPreview(lessonNumber: index, lesson: lesson, isComplete: false)
+                            LessonPreview(lessonNumber: index, lesson: lesson)
                         }
                     }
                 }

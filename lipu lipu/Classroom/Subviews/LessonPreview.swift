@@ -11,15 +11,9 @@ struct LessonPreview: View {
     let lessonNumber: Int
     let lesson: Lesson
     
-    var borderColor: UIColor = UIColor.tertiaryLabel
-    
-    init(lessonNumber: Int, lesson: Lesson, isComplete: Bool) {
+    init(lessonNumber: Int, lesson: Lesson) {
         self.lesson = lesson
         self.lessonNumber = lessonNumber
-        
-        if isComplete {
-            borderColor = UIColor.systemGreen
-        }
     }
     
     var body: some View {
@@ -39,12 +33,13 @@ struct LessonPreview: View {
             NavigationLink (destination: LessonView(lesson: lesson)) {}.opacity(0)
         }
         .overlay(
-            RoundedRectangle(cornerRadius: 10, style: .circular).stroke(Color(borderColor), lineWidth: 2)
+            RoundedRectangle(cornerRadius: 10, style: .circular).stroke(Color(UIColor.tertiaryLabel), lineWidth: 2)
+                .padding(EdgeInsets(top: 0, leading: 2, bottom: 0, trailing: 2))
         )
         
     }
 }
 
 #Preview {
-    LessonPreview(lessonNumber: 1, lesson: Lesson(title: "Lesson", category: "Basics", sitelen: "toki-pona", vocab: [], sections: []), isComplete: false)
+    LessonPreview(lessonNumber: 1, lesson: Lesson(title: "Lesson", category: "Basics", sitelen: "toki-pona", vocab: [], sections: []))
 }

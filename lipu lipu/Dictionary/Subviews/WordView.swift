@@ -9,7 +9,6 @@ import SwiftUI
 
 struct WordView: View {
     let word: Word
-    
     var definitions: [String] = []
     var book: String
     
@@ -80,22 +79,8 @@ struct WordView: View {
                 
                 //: RESOURCES
                 Section(header: Text("Resources")) {
-                    HStack {
-                        Link(destination: URL(string: "https://nimi.li/\(word.word)")!) {
-                            Text("Open in nimi.li")
-                        }
-                        Spacer()
-                        Image(systemName: "safari")
-                            .foregroundStyle(.tertiary)
-                    }
-                    HStack {
-                        Link(destination: URL(string: "https://linku.la/words/\(word.word)")!) {
-                            Text("Open in linku.la")
-                        }
-                        Spacer()
-                        Image(systemName: "safari")
-                            .foregroundStyle(.tertiary)
-                    }
+                    LinkButtonView(link: "https://nimi.li/\(word.word)", label: "Open in nimi.li")
+                    LinkButtonView(link: "https://linku.la/words/\(word.word)", label: "Open in linku.la")
                 }
             }
             .listSectionSpacing(10)

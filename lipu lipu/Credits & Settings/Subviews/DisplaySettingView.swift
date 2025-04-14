@@ -10,7 +10,6 @@ import SwiftUI
 struct DisplaySettingView: View {
     @StateObject private var appearanceManager = AppearanceManager.shared
     let accentColors = AppearanceManager.shared.accentColors
-    
     let insets = EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
     
     struct accentColorButton: View {
@@ -32,18 +31,6 @@ struct DisplaySettingView: View {
         }
     }
     
-    struct SectionHeader: View {
-        var title: String
-        
-        var body: some View {
-            Text(title)
-                .font(.title2)
-                .textCase(nil)
-                .fontWeight(.bold)
-                .foregroundStyle(.foreground)
-        }
-    }
-    
     var body: some View {
         NavigationStack {
             List {
@@ -56,6 +43,7 @@ struct DisplaySettingView: View {
                     }
                     .pickerStyle(.segmented)
                 }
+                
                 //: TINT COLOR
                 Section(header: SectionHeader(title: "Tint Color").listRowInsets(insets)) {
                     ForEach(accentColors, id: \.self) { color in

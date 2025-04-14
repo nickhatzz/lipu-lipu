@@ -22,41 +22,12 @@ struct DeckCreationView: View {
         GridItem(.adaptive(minimum: 100))
     ]
     
-    struct SectionHeader: View {
-        var title: String
-        
-        var body: some View {
-            Text(title)
-                .frame(alignment: .leading)
-                .font(.title2)
-                .textCase(nil)
-                .fontWeight(.bold)
-                .foregroundStyle(.foreground)
-        }
-    }
-    
     var body: some View {
         NavigationStack {
             List {
                 //: TITLE
                 Section(header: SectionHeader(title: "Title")) {
                     TextField("Enter deck title...", text: $titleText)
-                    .navigationTitle("Create a deck")
-                    .onAppear {
-                        apiCall().getWords { (words) in
-                            self.words = words
-                        }
-                    }
-                    .toolbar {
-                        Button {
-                            guard !selectedWords.isEmpty else { return }
-                            let deck = CustomDeck(title: titleText, type: typeSelection, words: selectedWords)
-                            modelContext.insert(deck)
-                            presentationMode.wrappedValue.dismiss()
-                        } label: {
-                            Image(systemName: "checkmark.rectangle.stack.fill")
-                        }
-                    }
                 }
                 
                 //: TYPE
@@ -103,6 +74,22 @@ struct DeckCreationView: View {
                 }
             }
             .listStyle(.inset)
+            .navigationTitle("Create a deck")
+            .onAppear {
+                apiCall().getWords { (words) in
+                    self.words = words
+                }
+            }
+            .toolbar {
+                Button {
+                    guard !selectedWords.isEmpty else { return }
+                    let deck = CustomDeck(title: titleText, type: typeSelection, words: selectedWords)
+                    modelContext.insert(deck)
+                    presentationMode.wrappedValue.dismiss()
+                } label: {
+                    Image(systemName: "checkmark.square")
+                }
+            }
         }
     }
 }

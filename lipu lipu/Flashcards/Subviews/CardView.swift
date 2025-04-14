@@ -13,8 +13,6 @@ struct CardView: View {
     let type: String
     let isFlipped: Bool
     
-//    @State var isFlipped: Bool = false
-    
     struct CardFront: View {
         let word: Word
         let color: Color

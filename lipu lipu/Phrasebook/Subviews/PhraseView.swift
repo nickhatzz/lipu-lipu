@@ -11,7 +11,6 @@ struct PhraseView: View {
     @Environment(\.colorScheme) var colorScheme
     let phrase: String
     let translations: String
-        
     let translationsArray: [String]
     
     init(phrase: String, translations: String) {

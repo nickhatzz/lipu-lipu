@@ -40,18 +40,6 @@ struct AppIconSettingView: View {
         }
     }
     
-    struct SectionHeader: View {
-        var title: String
-        
-        var body: some View {
-            Text(title)
-                .font(.title2)
-                .textCase(nil)
-                .fontWeight(.bold)
-                .foregroundStyle(.foreground)
-        }
-    }
-    
     var body: some View {
         NavigationStack {
             List {
@@ -67,12 +55,14 @@ struct AppIconSettingView: View {
                         AppIconButton(icon: icon)
                     }
                 }
+                
                 //: TOKI PONA ICONS
                 Section(header: SectionHeader(title: "Toki Pona").listRowInsets(insets)) {
                     ForEach(tokiPonaIcons, id: \.self) { icon in
                         AppIconButton(icon: icon)
                     }
                 }
+                
                 //: FUN ICONS
                 Section(header: SectionHeader(title: "Fun").listRowInsets(insets)) {
                     ForEach(funIcons, id: \.self) { icon in
