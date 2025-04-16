@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct DeckView: View {
+    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.modelContext) var modelContext
+
     @State var title: String
     let type: String
     let words: [String: Word]
+    let isCustom: Bool
     
     @State var colors: [Color] = [.accent, .red, .orange, .yellow, .green, .cyan, .blue, .purple, .pink, .indigo, .mint, .teal].shuffled()
     @State var wordKeys: [String] = []
@@ -69,6 +73,32 @@ struct DeckView: View {
             wordKeys = words.keys.sorted(by: <)
             wordKeys.shuffle()
         }
+        .toolbar {
+            if isCustom {
+                Menu {
+                    // EDIT
+                    NavigationLink(destination: DeckCreationView(selectedWords: words, titleText: title, typeSelection: type)) {
+                        Label("Edit Deck", systemImage: "slider.horizontal.3")
+                    }
+
+                    // DELETE
+                    Button(role: .destructive) {
+                        do {
+                            try modelContext.delete(model: CustomDeck.self, where: #Predicate { deck in
+                                deck.title == title
+                            })
+                            presentationMode.wrappedValue.dismiss()
+                        } catch {
+                            print("Unable to delete deck")
+                        }
+                    } label: {
+                        Label("Delete Deck", systemImage: "trash")
+                    }
+                } label: {
+                    Image(systemName: "ellipsis.circle")
+                }
+            }
+        }
     }
     
     func swipeLeft() {
@@ -101,5 +131,5 @@ struct DeckView: View {
     let translations = [
         "en": Translations(commentary: "commentary", definition: "flat and bendable object, e.g. paper, card, leaf; written text or document, e.g. book, website, clay tablet", etymology: [TranslationsEtymology(definition: "definition", language: "language")], sp_etymology: "sitelen etymology")
     ]
-    DeckView(title: "Deck Title", type: "vocab", words: ["lipu": Word(word: "lipu", book: "pu", source_language: "Finnish", usage_category: "core", etymology: [Etymology(word: "word")], translations: translations), "toki": Word(word: "toki", book: "pu", source_language: "Finnish", usage_category: "core", etymology: [Etymology(word: "word")], translations: translations), "pona": Word(word: "pona", book: "pu", source_language: "Finnish", usage_category: "core", etymology: [Etymology(word: "word")], translations: translations)])
+    DeckView(title: "Deck Title", type: "vocab", words: ["lipu": Word(word: "lipu", book: "pu", source_language: "Finnish", usage_category: "core", etymology: [Etymology(word: "word")], translations: translations), "toki": Word(word: "toki", book: "pu", source_language: "Finnish", usage_category: "core", etymology: [Etymology(word: "word")], translations: translations), "pona": Word(word: "pona", book: "pu", source_language: "Finnish", usage_category: "core", etymology: [Etymology(word: "word")], translations: translations)], isCustom: true)
 }

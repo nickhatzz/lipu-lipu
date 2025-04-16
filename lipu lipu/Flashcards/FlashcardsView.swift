@@ -19,10 +19,10 @@ struct FlashcardsView: View {
                 Section(header: SectionHeader(title: "Vocabulary")) {
                     ScrollView(.horizontal) {
                         LazyHStack(spacing: 30) {
-                            DeckPreview(title: "Common", type: "vocab", words: commonWords, colors: [.red, .orange, .yellow])
-                            DeckPreview(title: "Pu", type: "vocab", words: puWords, colors: [.cyan, .blue, .purple])
-                            DeckPreview(title: "Ku", type: "vocab", words: kuWords, colors: [.green, .mint, .indigo])
-                            DeckPreview(title: "All", type: "vocab", words: words, colors: [.brown, .gray, .black])
+                            DeckPreview(title: "Common", type: "vocab", words: commonWords, colors: [.red, .orange, .yellow], isCustom: false)
+                            DeckPreview(title: "Pu", type: "vocab", words: puWords, colors: [.cyan, .blue, .purple], isCustom: false)
+                            DeckPreview(title: "Ku", type: "vocab", words: kuWords, colors: [.green, .mint, .indigo], isCustom: false)
+                            DeckPreview(title: "All", type: "vocab", words: words, colors: [.brown, .gray, .black], isCustom: false)
                         }
                         .padding(EdgeInsets(top: 10, leading: 5, bottom: 10, trailing: 5))
                     }
@@ -32,8 +32,8 @@ struct FlashcardsView: View {
                 Section(header: SectionHeader(title: "Sitelen Pona")) {
                     ScrollView(.horizontal) {
                         LazyHStack(spacing: 30) {
-                            DeckPreview(title: "Common", type: "sitelen", words: commonWords, colors: [.pink, .teal, .indigo])
-                            DeckPreview(title: "All", type: "sitelen", words: words, colors: [.purple, .mint, .orange])
+                            DeckPreview(title: "Common", type: "sitelen", words: commonWords, colors: [.pink, .teal, .indigo], isCustom: false)
+                            DeckPreview(title: "All", type: "sitelen", words: words, colors: [.purple, .mint, .orange], isCustom: false)
                         }
                         .padding(EdgeInsets(top: 10, leading: 5, bottom: 10, trailing: 5))
                     }
@@ -44,7 +44,7 @@ struct FlashcardsView: View {
                     ScrollView(.horizontal) {
                         LazyHStack(spacing: 30) {
                             ForEach(customDecks, id: \.self) { deck in
-                                DeckPreview(title: deck.title, type: deck.type, words: deck.words, colors: getRandomColors(title: deck.title))
+                                DeckPreview(title: deck.title, type: deck.type, words: deck.words, colors: getRandomColors(title: deck.title), isCustom: true)
                             }
                         }
                         .padding(EdgeInsets(top: 10, leading: 5, bottom: 10, trailing: 5))

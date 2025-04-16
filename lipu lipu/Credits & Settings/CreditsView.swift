@@ -99,7 +99,11 @@ struct CreditsView: View {
     }
     
     func deleteFlashcardData() {
-        try! modelContext.delete(model: CustomDeck.self)
+        do {
+            try modelContext.delete(model: CustomDeck.self)
+        } catch {
+            print("Could not delete flashcard data")
+        }
     }
 }
 

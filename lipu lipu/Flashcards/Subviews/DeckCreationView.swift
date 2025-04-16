@@ -79,18 +79,37 @@ struct DeckCreationView: View {
                 apiCall().getWords { (words) in
                     self.words = words
                 }
+                do {
+                    try modelContext.delete(model: CustomDeck.self, where: #Predicate { deck in
+                        deck.title == titleText
+                    })
+                } catch {
+                    print("Could not delete previous deck")
+                }
             }
             .toolbar {
                 Button {
-                    guard !selectedWords.isEmpty else { return }
-                    let deck = CustomDeck(title: titleText, type: typeSelection, words: selectedWords)
-                    modelContext.insert(deck)
-                    presentationMode.wrappedValue.dismiss()
+                    saveDeck()
                 } label: {
                     Image(systemName: "checkmark.square")
                 }
             }
         }
+    }
+    
+    func saveDeck() {
+        guard !selectedWords.isEmpty else { return }
+        let deck = CustomDeck(title: titleText, type: typeSelection, words: selectedWords)
+        modelContext.insert(deck)
+        do {
+            try modelContext.delete(model: CustomDeck.self, where: #Predicate { deck in
+                deck.title == titleText
+            })
+            try modelContext.save()
+        } catch {
+            print("Failed to save new deck")
+        }
+        presentationMode.wrappedValue.dismiss()
     }
 }
 

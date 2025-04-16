@@ -12,9 +12,10 @@ struct DeckPreview: View {
     let type: String
     let words: [String: Word]
     let colors: [Color]
+    let isCustom: Bool
     
     var body: some View {
-        NavigationLink(destination: DeckView(title: title, type: type, words: words)) {
+        NavigationLink(destination: DeckView(title: title, type: type, words: words, isCustom: isCustom)) {
             VStack {
                 Text(title)
                     .textCase(.uppercase)
