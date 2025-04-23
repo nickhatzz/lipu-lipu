@@ -25,9 +25,16 @@ struct DeckView: View {
     
     var body: some View {
         ZStack {
+            // CONFETTI
+            if wordKeys.isEmpty {
+                ConfettiView()
+            }
+            
+            // CARDS
             VStack {
                 Text(title)
                     .font(.system(size: 50, weight: .black))
+                    .animation(.spring, value: wordKeys.isEmpty)
                 if !wordKeys.isEmpty {
                     CardView(word: words[wordKeys[0]]!, color: colors[0], type: type, isFlipped: isFlipped)
                         .offset(x: xOffset)
@@ -65,9 +72,9 @@ struct DeckView: View {
                         )
                 } else {
                     Text("You did it!")
-                    // confetti
+                        .animation(.spring, value: wordKeys.isEmpty)
                 }
-                Spacer()
+//                Spacer()
             }
         }.onAppear() {
             wordKeys = words.keys.sorted(by: <)
