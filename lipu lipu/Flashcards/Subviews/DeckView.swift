@@ -38,6 +38,7 @@ struct DeckView: View {
                 if !wordKeys.isEmpty {
                     CardView(word: words[wordKeys[0]]!, color: colors[0], type: type, isFlipped: isFlipped)
                         .offset(x: xOffset)
+                        .animation(.bouncy, value: xOffset)
                         .shadow(color: shadowColor, radius: 20)
                         .rotationEffect(.degrees(xOffset/40))
                         .onTapGesture {

@@ -86,7 +86,7 @@ struct WordView: View {
             .listSectionSpacing(10)
             Spacer()
         }
-        
+        .animation(.bouncy)
     }
 }
 

@@ -21,28 +21,31 @@ struct PhraseView: View {
     }
     
     var body: some View {
-        Text(phrase)
-            .font(.title)
-            .bold()
-        
-        List {
-            //: TRANSLATIONS
-            Section(header: Text("Translations")) {
-                ForEach(translationsArray, id: \.self) { translation in
-                    VStack(alignment: .leading) {
-                        Text(translation)
-                        Text(translation.replacingOccurrences(of: "!", with: "").replacingOccurrences(of: "?", with: ""))
-                            .font(Font.custom("sitelenselikiwenmonoasuki", size: 18))
-                            .foregroundStyle(.secondary)
+        NavigationStack {
+            Text(phrase)
+                .font(.title)
+                .bold()
+            
+            List {
+                //: TRANSLATIONS
+                Section(header: Text("Translations")) {
+                    ForEach(translationsArray, id: \.self) { translation in
+                        VStack(alignment: .leading) {
+                            Text(translation)
+                            Text(translation.replacingOccurrences(of: "!", with: "").replacingOccurrences(of: "?", with: ""))
+                                .font(Font.custom("sitelenselikiwenmonoasuki", size: 18))
+                                .foregroundStyle(.secondary)
+                        }
                     }
                 }
-            }
-            
-            //: DISCLAIMER
-            Section(header: Text("Disclaimer")) {
-                Text("Keep in mind that Toki Pona is a flexible language! These are possible ways to say this idea, but they aren't \(Text("the").underline()) way to say it. Get creative and think of your own ways of saying this idea too!")
+                
+                //: DISCLAIMER
+                Section(header: Text("Disclaimer")) {
+                    Text("Keep in mind that Toki Pona is a flexible language! These are possible ways to say this idea, but they aren't \(Text("the").underline()) way to say it. Get creative and think of your own ways of saying this idea too!")
+                }
             }
         }
+        .animation(.bouncy)
     }
 }
 

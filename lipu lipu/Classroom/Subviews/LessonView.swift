@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LessonView: View {
-    let lesson: Lesson
+    @State var lesson: Lesson
     @State var words: [String: Word] = [:]
     
     var body: some View {
@@ -57,6 +57,7 @@ struct LessonView: View {
                 }
             }
         }
+        .animation(.bouncy)
     }
 }
 

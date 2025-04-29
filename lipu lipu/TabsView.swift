@@ -17,16 +17,16 @@ struct ContentView: View {
                 DictionaryView()
             }
             
+            Tab("Flashcards", systemImage: "paperclip", value: 1) {
+                FlashcardsView()
+            }
+            
             Tab("Phrasebook", systemImage: "book.fill", value: 2) {
                 PhrasebookView()
             }
 
             Tab("Classroom", systemImage: "graduationcap.fill", value: 3) {
                 ClassroomView()
-            }
-            
-            Tab("Flashcards", systemImage: "paperclip", value: 1) {
-                FlashcardsView()
             }
 
             Tab("About", systemImage: "info.square.fill", value: 4) {
